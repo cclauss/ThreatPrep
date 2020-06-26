@@ -1,3 +1,4 @@
+from __future__ import print_function
 import argparse
 import boto3
 import botocore
@@ -160,11 +161,11 @@ class Checker(object):
 
     def print_results(self):
         for result in self.results:
-            print result
+            print(result)
             if len(result.subchecks) > 0:
                 for subcheck in result.subchecks:
-                    print ' -',subcheck
-                print ''
+                    print(' -', subcheck)
+                print('')
 
 def get_regions():
     client = boto3.client('ec2', region_name='us-east-1')
@@ -176,4 +177,4 @@ if __name__ == '__main__':
     checker.run_checks()
     results = checker.results_dict
 
-    print json.dumps(results, indent=4)
+    print(json.dumps(results, indent=4))
